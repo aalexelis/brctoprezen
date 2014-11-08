@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Lift Presentation</title>
+
+		<meta name="description" content="A presentation of Lift framework">
+		<meta name="author" content="Andreas Alexelis with contribution of Lift community">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+		    <script id="jquery" src="/classpath/fobo/jquery.js" type="text/javascript"></script>
+    <script id="json" src="/classpath/json.js" type="text/javascript"></script> 
+      		<script src="/classpath/fobo/angular.js" type="text/javascript"></script>
+      		<script src="/static/js/chat-angularjs.js" type="text/javascript"></script>
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+            <section>
+                <h1>LIFT</h1>
+                <h3>を使って、インテラクティブWebApps<br>を作ろう！</h3>
+                <p>
+                    <small>Created by <a href="http://www.bizreach.co.jp/recruit/engineer-designer/interview/08/">龍ちゃん</a> / <a href="http://www.bizreach.co.jp/">RegionUp</a></small>
+                </p>
+            </section>
+
+            <section>
+                <h2>Liftって何？</h2>
+                <p>
+                <ul>
+                    <li>Scalaフレームワーク</li>
+                    <ul>
+                        <li>作者：David Pollak氏 (dpp)</li>
+                        <li>初回リリース：2007/2/26 (Apache 2.0 license)</li>
+                    </ul>
+                </ul>
+                <ul>
+                    <li>Pollak氏と龍ちゃん以外、使っている人おる？</li>
+                    <ul>
+                        <li>LinkedIn(一部), Foursquareが有名</li>
+                        <li>一時期、Scalaの標準フレームワークになりそうだったが…</li>
+                        <li>活発（…が、こじんまり :-( なコミュニティーにサッポートされている</li>
+                    </ul>
+                </ul>
+                </p>
+                <h3>つまらなそうだな。何がいいの？</h3>
+
+                <aside class="notes">
+                    Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+                </aside>
+            </section>
+
+            <section>
+                <h2>特徴</h2>
+                <p>
+                <ul>
+                    <li>Not MVC, "View First"</li>
+                    <li>HTTP abstracted away</li>
+                    <li>Security Baked In</li>
+                    <li>Highly Interactive</li>
+                </ul>
+                </p>
+                <h3>本当かなぁ？</h3>
+            </section>
+
+            <!-- Example of nested vertical slides -->
+            <section>
+                <section data-lift="ViewFirst">
+                    <h2>View Last</h2>
+                    <p>
+                    <ul>
+                        <li class="template">デザイナーは</li>
+                        <li class="clearable">好きなように</li>
+                        <li class="clearable">書ける！</li>
+                    </ul>
+                    </p>
+                    <h3>きっと嘘だ。デモ見せろ！</h3>
+                </section>
+                <section>
+                    <h2>スニッペット</h2>
+                    <p>スニペットは、単なるHTML => HTMLの関数。</p>
+                    <pre>
+-- Scala --
+object <font style="color: green;">Snippet</font> {
+    def render = "<font style="color: orange;">.template</font> *" #> "Replaced!"
+}
+
+-- Markup --
+...
+    &lt;div  data-lift="<font style="color: green;">Snippet</font>"&gt;
+        &lt;span <font style="color: orange;">class="template"</font>&gt;Replace me&lt;/span&gt;  
+    &lt;/div&gt;
+...
+                    </pre>
+                </section>
+                <section>
+                    <h2>スニッペット</h2>
+                    <p>
+                    <ul>
+                        <li>Controllers are so...20th Century-ish!!! Use Snippets</li>
+                    </ul>
+                    </p>
+                    <h3>失礼な。何で？</h3>
+                    <p>
+                    <div>複数な関数、何回も、あっちこっちに使えるから</div>
+                    <table data-lift="ViewFirst">
+                        <tr>
+                            <td class="template">どこでも</td>
+                            <td class="clearable">置換</td>
+                            <td class="clearable">できる</td>
+                        </tr>
+                    </table>
+                    <select  data-lift="ViewFirst">
+                        <option class="template">どこでも</option>
+                        <option class="clearable">置換</option>
+                        <option class="clearable">できる</option>
+                    </select>
+                    </p>
+                </section>
+                <section>
+                    <h2>Basement Level 3</h2>
+                    <p>That's it, time to go back up.</p>
+                    <a href="#/2" class="image">
+                        <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
+                    </a>
+                </section>
+            </section>
+
+			<section>
+				<section>
+					<h2>HTTP abstracted away</h2>
+					<p>古き良きPOST型フォーム
+					<div>
+						<p>
+							静的HTMLの&lt;input&gt;などの入力エレメントに<br>ビヘイビアを付ける。<br>
+							コールバック関数を指定するだけで、<br>Request/Responseはフレームワーク任せ。
+						</p>	
+					</div>
+					<div>
+						<form data-lift="OnSubmit?form=post">
+      							Name: <input name="name"><input type="submit" value="Submit">
+    					</form>
+  					</div>
+					<h3>へー、ページリロードはしょぼい。もっとかっこいいの、ないの？</h3>
+				</section>
+				<section>
+					<h2>HTTP abstracted away</h2>
+					<p>AJAX
+					<div>
+						<p>
+							以外と、コードは先とほっとんど同じ。<br>
+							静的HTMLの&lt;input&gt;などの入力エレメントに<br>ビヘイビアを付ける。<br>
+							コールバック関数はJacascriptを返すという違いだけ。
+						</p>	
+					</div>
+					<div>
+						<form data-lift="OnSubmitAjax?form=ajax">
+      							Name: <input name="name"><input type="submit" value="Submit">
+    					</form>
+  					</div>
+  					<div>
+  						<div data-lift="AjaxElement"><a id="pushme">Push me!</a></div>
+  					</div>
+					<h3>なんとなくわかったが、何でこれでセキュリティがいいの？</h3>
+				</section>
+			</section>
+			
+			<section>
+				<section>
+					<h2>セキュリティー</h2>
+					<p>UUID</p>
+					<div>
+						<p>
+							UUIDだらけ。<br>サーバー側に意味あるものをクライアントに見せない。<br>
+							勝手にやってくれるから、楽。<br>
+							CSRF, Replay Attackは効かない。
+						</p>	
+					</div>
+					<pre>
+-- Template --
+
+&lt;form data-lift="OnSubmit?form=post"&gt;
+	Name: &lt;input name="<font style="color: orange;">name</font>"&gt;&lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+...
+                    </pre>
+					<div>
+						<form data-lift="OnSubmit?form=post">
+      							Name: <input name="name"><input type="submit" value="Submit">
+    					</form>
+  					</div>
+				</section>
+				<section>
+					<h2>セキュリティー</h2>
+					<p>PK等サーバーサイドデータ</p>
+					<div>
+						<p>
+							サーバー側に意味あるデータをクライアントに見せない。<br>
+							代わりに意味のないトークンしか見せない。<br>
+							※Server-side stateful(長所短所あり)
+						</p>	
+					</div>
+					<pre><code data-trim contenteditable>
+-- Scala --
+...
+ajaxButton("Accept", () => {request.accept.save;
+ SetHtml("acceptrejectspan", <span/>}) ++
+ ajaxButton("Reject", () => {request.reject.save;
+ SetHtml("acceptrejectspan", <span/>})
+...
+                    </code></pre>
+					<div>
+						<p>requestのPKはクライアント側どこにもない。代わりrequest変数がスコープに入った無名関数（Closure)のコールバックに対して２４桁のトークンを渡し、レスポンスがサーバーに来てはじめて、HEAPにある該当requestが現れる。
+  					</div>
+				</section>
+				<section>
+					<h2>セキュリティー</h2>
+					<p>User Access</p>
+					<div>
+						<p>
+							<ul>
+							<li>ユーザーアクセスを意識したフレームワーク。</li>
+							<li>変なコーディングが発生しうる箇所はすくない。</li>
+							<li>SiteMapも、Restもアクセス管理実装済み
+								<ul><li>※SiteMapは凡人にはちょいわかりにくいんですけど:-)</li><ul>
+							</li>
+							</ul>
+						</p>	
+					</div>
+					<pre><code data-trim contenteditable>
+-- Scala --
+...
+Menu("mypage") / "mypage" >> If(User.loggedIn _)
+Menu("admin") / "admin" >> If(User.superUser _)
+...
+                    </code></pre>
+					<h3>硬い話はもういい。インテラクティブ見せろ！</h3>
+				</section>
+			</section>
+			
+<section>
+				<section>
+					<h2>インテラクティブ</h2>
+					<p>COMET (Plain HTML)</p>
+					<div>
+						<p>
+							AJAXはクライアント開始イベント<br>
+							サーバー開始イベントでクライアントを更新するのはCOMET<br>
+							前世代のブラウザーでもいける。
+						</p>	
+					</div>
+					<div data-lift="comet?type=Chat">
+        Some chat messages
+        <ul id="messages">
+          <li class="clearable">A message</li>
+          <li class="clearable">Another message</li>
+          <li class="clearable">A third message</li>
+        </ul>
+      </div>
+      <div>
+        <form data-lift="form.ajax?class=navbar-form pull-left span5">
+          <input type="text" class="span5" data-lift="ChatIn" id="chat_in">
+          <button type="submit" class="btn btn-primary">Say Something</button>
+        </form>
+      </div>
+				</section>
+				<section>
+					<h2>インテラクティブ</h2>
+					<p>COMET (Angular)</p>
+					<div>
+						<p>
+							HTMLを送信するのは、だっさい。<br>
+							はやりはOnly-Data-On-Wire<br>
+							クライアント側にAngularJs等がいれば、OK!
+						</p>	
+					</div>
+					<div ng-app>
+  <div data-lift="comet?type=ChatAngularJs"></div>
+  <div id="chat-messages" class="ngtodoctrlid"  data-ng-controller="TodoCtrl">
+    Some chat messages
+    <ul id="ngMmessages">
+      <li data-ng-repeat="todo in todos">
+        <span data-ng-bind="todo.message">Sample message</span>
+      </li>
+      <li class="clearable">Another message</li>
+      <li class="clearable">A third message</li>
+    </ul>
+  </div>
+  <div>
+    <form data-lift="form.ajax?class=navbar-form pull-left span5">
+      <input type="text" class="span5" data-lift="ChatIn" id="chat_in">
+      <button type="submit" class="btn btn-primary">Say Something</button>
+    </form>
+  </div>
+  </div>
+
+					<div>
+  					</div>
+				</section>
+				<section>
+					<h2>インテラクティブ</h2>
+					<p>COMET (Client/Server Actors)</p>
+					<div>
+						<p>
+							サーバーアクターがJSONを送信するのはいいけど<br>
+							クライアント側も、ユーザーの行動と<br>非同期なイベントもある。<br>
+							例えば、ユーザーが書く長文のサーバーへ定期的保存。<br>
+							サーバーと同じ様にクライアント側にもアクター！
+						</p>	
+					</div>
+				</section>
+			</section>
+			<section>
+					<h2>まとめ</h2>
+					<p>Lift</p>
+					<div>
+						<ul>
+                    <li>いいところ</li>
+                    <ul>
+                        <li>フレームワークいろいろ面倒みてくれる。</li>
+                        <li>わりと複雑なアプリを数行で書ける。</li>
+                    </ul>
+                </ul>
+                <ul>
+                    <li>よくないところ</li>
+                    <ul>
+                        <li>どう考えても、マニアック。メージャーにならないだろう。</li>
+                        <li>Statefullなのでインフラ構築時点に要注意</li>
+                    </ul>
+                </ul>
+                </p>
+                <h3>あっ、やっと終わった。よしよし</h3>
+					</div>
+				</section>
+
+				
+
+			</div>
+
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
