@@ -1,6 +1,5 @@
 package bootstrap.liftweb
 
-import code.rest.CartRest
 import net.liftweb._
 import util._
 import Helpers._
